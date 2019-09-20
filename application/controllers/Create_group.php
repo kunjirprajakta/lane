@@ -34,6 +34,7 @@ class Create_group extends CI_Controller
 		    $data['reject']= base_url().'index.php/Create_group/reject';
 			$data['accept']= base_url().'index.php/Create_group/accept';
 			$data['borrowMoney'] = base_url().'index.php/Create_group/borrowMoney';
+			
 
 
 			$this->load->view('common/header');
@@ -57,7 +58,6 @@ class Create_group extends CI_Controller
         {
 			$uniqueId=rand(11111,99999);
 			$insert=$this->Common_model->insert("groups",array('admin'=>$user_id,'group_name'=>$groupName,'limit'=>$limit,'link'=>$uniqueId,'group_balance'=>$limit,'lane_limit'=>$lane_limit,'users'=>$user_id,'member_limit'=>$member_limit));
-			$insert=$this->Common_model->insert("lane_group_temp",array('user_id'=>$user_id,'Group_id'=>$uniqueId));
 
 			$getGroup=$this->Common_model->getAll("groups",array('link'=>$uniqueId))->row_array();
 			
@@ -80,7 +80,7 @@ class Create_group extends CI_Controller
 	// 	print_r($getBal['total_amount']);
 	 	$update=$this->Common_model->update('total_balance',array('total_amount'=>$getBal['total_amount']-$groupLimit),array('user_id'=>$user_id));
 	 	$getGroup=$this->Common_model->getAll("groups",array('admin'=>$user_id))->row_array();
-         $insertTransaction=$this->Common_model->insert('transaction',array('user_from'=>$user_id,'group_to'=>$getGroup['id'],'type'=>'withdraw'));
+         $insertTransaction=$this->Common_model->insert('transaction',array('user_from'=>$user_id,'group_to'=>$getGroup['id'],'type'=>'deposit','user_id'=>$user_id));
 
  	 }
 
@@ -180,10 +180,58 @@ class Create_group extends CI_Controller
 		$updatebal=$this->Common_model->update("total_balance",array('total_amount'=>$getBal['total_amount']+$borrow),array('user_id'=>$userId));
 
 
-       $insertTransaction=$this->Common_model->insert("transaction",array('user_to'=>$userId,'group_from'=>$group_id,'type'=>'deposit'));
+       $insertTransaction=$this->Common_model->insert("transaction",array('user_to'=>$userId,'group_from'=>$group_id,'type'=>'withdraw'));
 redirect('/create_group');
 
 	}	
+
+	public function laneScoreCount(){
+		$numberOfTransactions; //Tanmay
+		$numberOfFriends; //Done
+		$totalDeposit; // Jagruti
+		$totalWithdraw; //Jagruti
+		$repaymentTimeTaken=$this->repaymentTimeTaken(); //Prajakta
+	}
+
+	public function repaymentTimeTaken(){
+		
+	}
+
+	public function getTotalGroups(){
+		$groups=$this->Common_model->getAll("groups")->result_array();
+
+	}
+
+	public function tempsize()
+		{
+			$userId=$this->tank_auth->get_user_id();
+			$groups=$this->Common_model->getAll("groups")->result_array();
+			$getBal=$this->Common_model->getAll("total_balance",array('user_id'=>$userId))->row_array();
+			//groups created in this group jisme khud logged in user hai
+			//if group size more than 2 hai to increment karneka value
+
+			foreach($groups as $d){
+
+			}
+
+			//$count=$this->Common_model->getusercount("groups");
+	//print_r($data);
+			// $n=sizeof($data);
+			
+			// for($i=0;$i<$n;$i++)
+			// {
+			// 	$expl=explode(',',$data[$i]['users']);
+			// 	$count=sizeof($expl);
+			// 	print_r($i);
+
+			// 	 if($count>2)
+			// 	 {
+			// 		  print_r($data[$i]);
+			// 	 	$update=$this->Common_model->update("total_balance",array('lane_score'=>$getBal['lane_score']+1),array('user_id'=>$data[$i]['admin']));
+			// 	 }
+			// }
+		}
+	
 
 
 }

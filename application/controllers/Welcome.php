@@ -133,21 +133,72 @@ redirect('/welcome');
    }	
 public function laneScore()
 {
-	$score=$this->Common_model->getfriendcount('lane_friend_temp');
-	$countt=$this->Common_model->getnumrows('lane_friend_temp');
 
-print_r($countt['0']['num']);
+	 $score=$this->Common_model->getfriendcount('lane_friend_temp');
+	 $countt=$this->Common_model->getnumrows('lane_friend_temp');
  
-	for($i=0;$i<=$countt['0']['num'];$i++) 
+	for($i=0;$i<$countt;$i++) 
 	{
-	if($score[$i]['total']>='2')
-    {
-		echo $score[$i]['user_id'];
-		$update=$this->Common_model->update("total_balance",array('lane_score'=>'1'),array('user_id'=>$score[$i]['user_id']));
+	 if($score[$i]['total']>='2')
+     {
+		$getBal=$this->Common_model->getAll("total_balance",array('user_id'=>$score[$i]['user_id']))->row_array();
 
+	 	$update=$this->Common_model->update("total_balance",array('lane_score'=>$getBal['lane_score']+1),array('user_id'=>$score[$i]['user_id']));
+ }
+	 }
+	
+
+	
+	// print_r($groupscore);
+
+// lane score for transaction
+
+ $getTransaction=$this->Common_model->getTransaction("transaction");
+ $countTran=$this->Common_model->getTransactionrows("transaction");
+ for($i=0;$i<$countTran;$i++) 
+	{
+ 	if($getTransaction[$i]['total']>='2')
+     {
+	$getBal=$this->Common_model->getAll("total_balance",array('user_id'=>$getTransaction[$i]['user_id']))->row_array();
+
+		$update=$this->Common_model->update("total_balance",array('lane_score'=>$getBal['lane_score']+1),array('user_id'=>$getTransaction[$i]['user_id']));
 	}
-    }
+ 	}
+	
+//lane score for type
+$getTransaction=$this->Common_model->getDepositrows("transaction");
+$n=sizeof($getTransaction);
+for($i=0;$i<$n;$i++)
+{
+
+$getdeposit=$this->Common_model->getAll("transaction",array('type'=>"deposit",'user_id'=>$getTransaction[$i]['user_id']))->result_array();
+
+
+
+   $count=0;
+ foreach($getdeposit as $deposit)
+  { 
+	  if($deposit['amount']>=500)
+	  {
+
+	   $count=1+$count;
+			if($count>1)
+			{
+			$getBal=$this->Common_model->getAll("total_balance",array('user_id'=>$deposit['user_id']))->row_array();
+
+			$update=$this->Common_model->update("total_balance",array('lane_score'=>$getBal['lane_score']+1),array('user_id'=>$deposit['user_id']));
+			}
+
+	  }
+
+  }
+ }
 }
+
+
+
+
+
 
 
 

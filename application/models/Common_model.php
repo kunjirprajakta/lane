@@ -35,32 +35,50 @@ class Common_Model extends CI_Model
         return $query;
 
 	}
-	public function getfriendcount(){
-		
+public function getfriendcount(){
 
-//$this->db->query("SELECT COUNT(*) AS friends_id FROM lane_friend_temp");
-//$this->db->where('user_id','18');
 $this->db->select('user_id, COUNT(user_id) as total');
 $this->db->from('lane_friend_temp');
 $this->db->group_by('user_id'); 
-//$this->db->order_by('total', 'desc'); 
- return $this->db->get()->result_array();
-
-
-
-
-	}
-
-
-	public function getnumrows(){
-		$this->db->select('COUNT(friends_id) as num');
-		$this->db->from('lane_friend_temp');
-
 return $this->db->get()->result_array();
 
+}
+public function getTransaction(){
 
+	$this->db->select('user_id, COUNT(user_id) as total');
+	$this->db->from('transaction');
+	$this->db->group_by('user_id'); 
+	return $this->db->get()->result_array();
+	
 	}
 
+public function getnumrows(){
+	$query = $this->db->query("SELECT DISTINCT user_id FROM lane_friend_temp");
+	$result = $query->num_rows();
+	return $result;
+
+	}
+	public function getTransactionrows(){
+		$this->db->distinct();
+
+		$this->db->select('user_id');
+		$query = $this->db->get('transaction');
+		$result=$query->num_rows();
+		return $result;
+	
+		}
+		public function getDepositrows(){
+			$type='deposit';
+		    $this->db->distinct();
+	
+			$this->db->select('user_id');
+			$this->db->where('type',$type);
+
+			$query = $this->db->get('transaction');
+   			$result=$query->result_array();
+			return $result;
+		
+			}
 	public function getCurrentAvg($tablename,$where='',$orderby='',$column='')
 	{
 		$this->db->select('current');
@@ -107,5 +125,14 @@ return $this->db->get()->result_array();
 		$query = $this->db->get($tablename);
 		return $query;
 	}
+
+	public function getusercount(){
+
+		$this->db->select('admin, COUNT(admin) as total');
+		$this->db->from('groups');
+		$this->db->group_by('admin'); 
+		return $this->db->get()->result_array();
+		
+		}
 }    
 ?>
