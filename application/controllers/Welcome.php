@@ -144,8 +144,8 @@ public function laneScore()
 		$getBal=$this->Common_model->getAll("total_balance",array('user_id'=>$score[$i]['user_id']))->row_array();
 
 	 	$update=$this->Common_model->update("total_balance",array('lane_score'=>$getBal['lane_score']+1),array('user_id'=>$score[$i]['user_id']));
- }
-	 }
+     }
+	}
 	
 
 	
@@ -193,12 +193,64 @@ $getdeposit=$this->Common_model->getAll("transaction",array('type'=>"deposit",'u
 
   }
  }
+
+//lane score time taken to deposit
+
+
+
+
+
+$getTransaction=$this->Common_model->getDepositrows("transaction");
+
+$getWithdraw=$this->Common_model->getWithdrawrows("transaction");
+print_r($getWithdraw);
+
+ $w=sizeof($getWithdraw);
+for($i=0;$i<$w;$i++)
+  {
+
+ $Withdraw=$this->Common_model->getAll("transaction",array('type'=>"withdraw",'user_id'=>$getWithdraw[$i]['user_id']))->result_array();
+ foreach($Withdraw as $with)
+ {
+
+ $fromgroup=$with['group_from'];
+ $touser=$with['user_to'];
+ $time1=$with['Time'];	
+ $getUser=$with['user_id'];
+ $deposit=$this->Common_model->getAll("transaction",array('type'=>"deposit",'user_id'=>$getUser))->result_array();
+//print_r($deposit);
+ }
+
+  foreach($deposit as $depo)
+ {
+
+ $togroup=$depo['group_to'];
+ $fromuser=$depo['user_from'];
+
+if($fromgroup==$togroup&&$touser==$fromuser){
+  $time1=$with['Time'];
+  $time2=$depo['Time'];
+  $diff = abs(strtotime($time2) - strtotime($time1));
+  $years = floor($diff / (365*60*60*24));
+  $months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+ $days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+if($days==4){
+$id=$depo['user_id'];
+	$getBal=$this->Common_model->getAll("total_balance",array('user_id'=>$id))->row_array();
+	
+	$update=$this->Common_model->update("total_balance",array('lane_score'=>$getBal['lane_score']+1),array('user_id'=>$id));
+	
+}
+
+
+}
+
+  }
 }
 
 
 
-
-
+}
 
 
 
