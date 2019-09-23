@@ -79,6 +79,20 @@ public function getnumrows(){
 			return $result;
 		
 			}
+
+			public function getWithdrawrows(){
+				$type='withdraw';
+				
+				$this->db->distinct();
+				$this->db->select('user_id');
+				$this->db->where('type',$type);
+	
+				$query = $this->db->get('transaction');
+				$result=$query->result_array();
+				return $result;
+			
+				}
+
 	public function getCurrentAvg($tablename,$where='',$orderby='',$column='')
 	{
 		$this->db->select('current');

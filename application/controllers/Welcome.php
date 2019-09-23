@@ -139,13 +139,13 @@ public function laneScore()
  
 	for($i=0;$i<$countt;$i++) 
 	{
-	 if($score[$i]['total']>='2')
-     {
-		$getBal=$this->Common_model->getAll("total_balance",array('user_id'=>$score[$i]['user_id']))->row_array();
+	 	if($score[$i]['total']>='2')
+     	{
+			$getBal=$this->Common_model->getAll("total_balance",array('user_id'=>$score[$i]['user_id']))->row_array();
 
-	 	$update=$this->Common_model->update("total_balance",array('lane_score'=>$getBal['lane_score']+1),array('user_id'=>$score[$i]['user_id']));
- }
-	 }
+	 		$update=$this->Common_model->update("total_balance",array('lane_score'=>$getBal['lane_score']+1),array('user_id'=>$score[$i]['user_id']));
+ 		}	
+	}
 	
 
 	
@@ -165,7 +165,7 @@ public function laneScore()
 	}
  	}
 	
-//lane score for type
+//lane score for type = deposit
 $getTransaction=$this->Common_model->getDepositrows("transaction");
 $n=sizeof($getTransaction);
 for($i=0;$i<$n;$i++)
@@ -193,6 +193,30 @@ $getdeposit=$this->Common_model->getAll("transaction",array('type'=>"deposit",'u
 
   }
  }
+
+//   lane score for type = withdraw
+  $getTransaction=$this->Common_model->getWithdrawrows("transaction");
+  //print_r($getTransaction);
+  $n=sizeof($getTransaction);
+ for($i=0;$i<$n;$i++)
+ {
+
+ $getWithdraw=$this->Common_model->getAll("transaction",array('type'=>"withdraw",'user_id'=>$getTransaction[$i]['user_id']))->result_array();
+ //print_r($getWithdraw);
+	 $count=0;
+	 foreach($getWithdraw as $withdraw) {
+		 if($withdraw['amount']>=500) {
+			 $count=1+$count;
+			 	if($count>1) {
+					//print_r($count);
+					$getBal=$this->Common_model->getAll("total_balance",array('user_id'=>$withdraw['user_id']))->row_array();
+					$update=$this->Common_model->update("total_balance",array('lane_score'=>$getBal['lane_score']+1),array('user_id'=>$withdraw['user_id']));
+
+				 }
+		 }
+	 }
+ }
+}
 }
 
 
@@ -203,4 +227,4 @@ $getdeposit=$this->Common_model->getAll("transaction",array('type'=>"deposit",'u
 
 
 
-}
+
