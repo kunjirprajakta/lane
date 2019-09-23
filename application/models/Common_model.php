@@ -79,18 +79,34 @@ public function getnumrows(){
 			return $result;
 		
 			}
+<<<<<<< HEAD
 	public function getWithdrawrows(){
 				$type='withdraw';
 				$this->db->distinct();
 		
+=======
+
+			public function getWithdrawrows(){
+				$type='withdraw';
+				
+				$this->db->distinct();
+>>>>>>> ff5a60be8022c6f0deae4fd0c0b8562ff8907f67
 				$this->db->select('user_id');
 				$this->db->where('type',$type);
 	
 				$query = $this->db->get('transaction');
+<<<<<<< HEAD
 				   $result=$query->result_array();
 				return $result;
 			
 				}
+=======
+				$result=$query->result_array();
+				return $result;
+			
+				}
+
+>>>>>>> ff5a60be8022c6f0deae4fd0c0b8562ff8907f67
 	public function getCurrentAvg($tablename,$where='',$orderby='',$column='')
 	{
 		$this->db->select('current');
