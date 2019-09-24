@@ -119,9 +119,11 @@
                                             
                                             <td align="center">
                                                 <span>
-                                                    <a title="" data-placement="top" data-toggle="add" href="#" data-original-title="Add">
-                                                        <i class="fa fa-plus color-muted m-r-5"></i>
-                                                    </a>
+                                                <?php echo form_open($addMembers); ?>
+                          <input type="hidden" name="link" value="<?php echo $gr['link']; ?>">
+                          <button type="submit" class="mb-2 btn btn-sm btn-danger mr-1">+</button>
+                          </form>
+                                                 
                                                     
                                                 </span>
                                             </td>

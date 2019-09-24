@@ -3,7 +3,8 @@
             <div class="nk-nav-scroll">
 
                 <div class="nav-user">
-                    <img src="<?php $getImg=$this->Common_model->getAll("users", array('id'=>$user_id))->row_array(); echo $getImg['profile_image'];?>" alt="" class="rounded-circle">
+                    <img src="<?php $user_id=$this->tank_auth->get_user_id();
+                     $getImg=$this->Common_model->getAll("users", array('id'=>$user_id))->row_array(); echo $getImg['profile_image'];?>" alt="" class="rounded-circle">
                     <h5>Tanmay Nigde</h5>
                     <p>UI Developer</p>
 
