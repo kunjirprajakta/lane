@@ -180,7 +180,7 @@ class Create_group extends CI_Controller
 		$updatebal=$this->Common_model->update("total_balance",array('total_amount'=>$getBal['total_amount']+$borrow),array('user_id'=>$userId));
 
 
-       $insertTransaction=$this->Common_model->insert("transaction",array('user_to'=>$userId,'group_from'=>$group_id,'type'=>'withdraw'));
+	   $insertTransaction=$this->Common_model->insert("transaction",array('user_to'=>$userId,'group_from'=>$group_id,'type'=>'withdraw'));
 redirect('/create_group');
 
 	}	

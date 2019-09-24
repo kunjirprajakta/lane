@@ -260,7 +260,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#">
+                                            <a href="<?php echo base_url('index.php/auth/logout'); ?>">
                                                 <i class="icon-power"></i>
                                                 <span>Logout</span>
                                             </a>

@@ -4,7 +4,7 @@
 
                 <div class="nav-user">
                     <img src="<?php $getImg=$this->Common_model->getAll("users", array('id'=>$user_id))->row_array(); echo $getImg['profile_image'];?>" alt="" class="rounded-circle">
-                    <h5>Tanmay Nigde</h5>
+                    <h5><?php $name=$this->Common_model->getAll("users",array('id'=>$user_id))->row_array(); echo $name['name']; ?></h5>
                     <p>UI Developer</p>
 
                     <div class="nav-user-option">
@@ -15,7 +15,7 @@
                             <div class="dropdown-menu animated flipInX">
                                 <a class="dropdown-item" href="#">Account</a>
                                 <a class="dropdown-item" href="#">Lock</a>
-                                <a class="dropdown-item" href="<?php echo base_url('/index.php/logout') ?>">Logout</a>
+                                <a class="dropdown-item" href="<?php echo base_url('index.php/auth/logout'); ?>">Logout</a>
                             </div>
                         </div>
                         <div class="notification-option">
@@ -56,7 +56,7 @@
                             </li>
                             <li>
                                     <a href= "<?php echo base_url('index.php/member_request');?>" aria-expanded="false">
-                                    <span class="nav-text">Friend Request</span></a>                            </li>
+                                    <span class="nav-text">Group Request</span></a>                            </li>
                             <li>
                                     <a href= "<?php echo base_url('index.php/profile');?>" aria-expanded="false">
                                     <span class="nav-text">Profile</span></a>
