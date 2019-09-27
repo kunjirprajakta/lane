@@ -13,9 +13,93 @@
         <!--**********************************
             Content body start
         ***********************************-->
+
+        <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="user-profile">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="user-photo m-b-30">
+                                            <img src="<?php $getImg=$this->Common_model->getAll("users", array('id'=>$user_id))->row_array(); echo $getImg['profile_image'];?>" alt="" class="img-responsive">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <div class="user-profile-name">
+                                        <?php $i=1; foreach($request_name as $req){?>
+                                        <?php $name=$this->Common_model->getAll("users",array('id'=>$req['id']))->row_array(); 
+                                        echo $name['name'];
+                                        ?>
+                                        <?php } ?></div>
+                                        <!-- <div class="user-Location">
+                                            <i class="ti-location-pin"></i> NY, USA</div>
+                                        <div class="user-job-title">Senior Advisor</div> -->
+                                        <!-- <div class="ratings">
+                                            <h4>Ratings</h4>
+                                            <div class="rating-star">
+                                                <span>8.9</span>
+                                                <i class="ti-star color-primary"></i>
+                                                <i class="ti-star color-primary"></i>
+                                                <i class="ti-star color-primary"></i>
+                                                <i class="ti-star color-primary"></i>
+                                                <i class="ti-star"></i>
+                                            </div>
+                                        </div> -->
+                                        <div class="user-send-message">
+                                            <button class="btn btn-primary btn-addon" type="button">
+                                                <i class="ti-email m-r-10"></i>Send Message</button>
+                                        </div>
+                                        <div class="contact-information">
+                                            <h4>Contact information</h4>
+                                            <div class="phone-content">
+                                                <span class="contact-title">Phone:</span>
+                                                <span class="phone-number">+880123456789</span>
+                                            </div>
+                                            <div class="address-content">
+                                                <span class="contact-title">Address:</span>
+                                                <span class="mail-address">123, King suit, South Side</span>
+                                            </div>
+                                            <div class="email-content">
+                                                <span class="contact-title">Email:</span>
+                                                <span class="contact-email">hello@email.com</span>
+                                            </div>
+                                            <!-- <div class="website-content">
+                                                <span class="contact-title">Website:</span>
+                                                <span class="contact-website">www.9kit.net</span>
+                                            </div>
+                                            <div class="skype-content">
+                                                <span class="contact-title">Skype:</span>
+                                                <span class="contact-skype">sporsho9</span>
+                                            </div> -->
+                                        </div>
+                                        <div class="basic-information">
+                                            <h4>Basic information</h4>
+                                            <div class="birthday-content">
+                                                <span class="contact-title">Birthday:</span>
+                                                <span class="birth-date">January 31, 1990 </span>
+                                            </div>
+                                            <div class="gender-content">
+                                                <span class="contact-title">Gender:</span>
+                                                <span class="gender">Male</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
  
 
-        <div class="text-center">
+        <!-- <div class="text-center">
                                 <img alt="" class="rounded-circle m-t-10 w-50px" src="../assets/images/users/1.jpg">
                                 <h1 class="f-w-500 m-t-15">
                                 <?php $i=1; foreach($request_name as $req){?>
@@ -72,4 +156,4 @@
                             ?>
                             <?php } ?></h5>
                             <span class="f-s-30 f-w-300 text-danger"></span>
-                        </div>
+                        </div> -->

@@ -96,7 +96,7 @@
                                                 <i class="cc BTC"></i>
                                             </button>
                                         </div>
-                                        <input type="number"  placeholder="100" class="form-control">
+                                        <input type="text" id="amt-<?php echo $g['id']; ?>" placeholder="100" class="form-control">
                                         <div class="input-group-append">
                                             <button class="btn btn-outline-primary" type="button">
                                                 <i class="fa fa-file-text"></i>
@@ -108,21 +108,21 @@
                                 <table class="table">
                                     <tr>
                                         <td>Group Balance</td>
-                                        <td><b>8,520/-</b></td>
+                                        <td id="grp_bal-"<?php echo $g['id']; ?>>8,520/- </td>
                                     </tr>
                                     <tr>
                                         <td>Group Limit</td>
-                                        <td>1000</td>
+                                        <td><?php echo $g['limit']; ?></td>
                                     </tr>
                                     <tr>
                                         <td>Group Lane Score</td>
-                                        <td>45</td>
+                                        <td><?php echo $g['lane_limit']; ?></td>
                                     </tr>
                                 </table>
                                     
                                     <?php echo form_open($borrow); ?>
                                         <input type="hidden" name="id" value="<?php echo $g['id']; ?>">
-                                        <a class="btn btn-danger" href="#">Withdraw</a>
+                                        <a class="btn btn-danger" onclick="withdraw(<?php echo $g['id']; ?>);" href="#">Withdraw</a>
 
 
                                     <a class="btn btn-success" href="#">Deposit</a>
@@ -138,6 +138,25 @@
         
         ?>
     </div>
+
+    <script>
+        function withdraw(id){
+            var amount = $("#amt-"+id).val();
+            if(amount != ""){
+                $.ajax({
+                    url: '<?php echo base_url() ?>/index.php/Welcome/withdraw/'+id+'/'+amount,
+                    cache: false,
+
+                    success: function(response){
+                        $("#grp_bal"+id).html(response);
+                    }
+                });
+            }else{
+                alert("Enter a valid amount!");
+            }
+            
+        } 
+    </script>
        <div class="row">
                 <div class="col-lg-12">
                     <div class="card">
@@ -260,3 +279,4 @@
                 </div>
             </div>
        </div></div></div></div>
+       

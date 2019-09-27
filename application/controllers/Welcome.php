@@ -71,10 +71,10 @@ class Welcome extends CI_Controller
 					//get count of groups end
 				//	$data['add_registration'] = base_url().'Welcome/add';
 				//	$data['get_data'] = $this->Register_model->get_data();
-			$this->load->view('common/header');
-			$this->load->view('common/nav',$data);
-			$this->load->view('welcome',$data);
-			$this->load->view('common/footer');
+					$this->load->view('common/header');
+					$this->load->view('common/nav',$data);
+					$this->load->view('welcome',$data);
+					$this->load->view('common/footer');
 				
 		}
 	}
@@ -100,10 +100,10 @@ class Welcome extends CI_Controller
 	   $data['borrow']=$this->input->post('borrow');
 	   $userId=$this->tank_auth->get_user_id();
 
-//	$data['borrow'] = base_url().'index.php/Create_group/borrow';
-   //	$data['borrowMoney'] = base_url().'index.php/Create_group/borrowMoney';
-   //$grp['list']=$this->Common_model->getAll("groups",array('id'=>'1'))->result_array();
-		   //$insert=$this->Common_model->insert("group_account",array('member_id'=>$userId,'borrow'=>$data['borrow'],'group_id'=>$data['grpid']));
+	   //$data['borrow'] = base_url().'index.php/Create_group/borrow';
+   	   //$data['borrowMoney'] = base_url().'index.php/Create_group/borrowMoney';
+    //    $grp['list']=$this->Common_model->getAll("groups",array('id'=>'1'))->result_array();
+	//    $insert=$this->Common_model->insert("group_account",array('member_id'=>$userId,'borrow'=>$data['borrow'],'group_id'=>$data['grpid']));
 
 		   echo $data['borrow'];
 		   $data['lane'] = base_url()."/Welcome/lane";
@@ -164,7 +164,11 @@ public function laneScore()
 	}
  	}
 	
+<<<<<<< HEAD
+//lane score for type Deposit
+=======
 //lane score for type = deposit
+>>>>>>> cf521de62b4a1f1abe524d99d0db9bab28d47eff
 $getTransaction=$this->Common_model->getDepositrows("transaction");
 $n=sizeof($getTransaction);
 for($i=0;$i<$n;$i++)
@@ -192,6 +196,9 @@ $getdeposit=$this->Common_model->getAll("transaction",array('type'=>"deposit",'u
 
   }
  }
+<<<<<<< HEAD
+
+=======
  //   lane score for type = withdraw
  $getTransaction=$this->Common_model->getWithdrawrows("transaction");
  //print_r($getTransaction);
@@ -267,6 +274,7 @@ $id=$depo['user_id'];
   $n=sizeof($getTransaction);
 
 }
+>>>>>>> cf521de62b4a1f1abe524d99d0db9bab28d47eff
 }
 
 
@@ -279,6 +287,52 @@ $id=$depo['user_id'];
 
 
 }
+
+
+	public function withdraw($id,$amount){
+		$borrow=$amount;
+		$group_id=$id;
+		$userId=$this->tank_auth->get_user_id();
+		$insert=$this->Common_model->insert("group_account",array('member_id'=>$userId,'borrow'=>$borrow,'group_id'=>$group_id));
+		$grp=$this->Common_model->getAll("groups",array('id'=>$group_id))->row_array();
+ 
+		$update=$this->Common_model->update("groups",array('group_balance'=>$grp['group_balance']-$borrow),array('id'=>$group_id));
+
+		$getBal=$this->Common_model->getAll("total_balance",array('user_id'=>$userId))->row_array();
+		
+		$updatebal=$this->Common_model->update("total_balance",array('total_amount'=>$getBal['total_amount']+$borrow),array('user_id'=>$userId));
+ 
+ 
+	   	$insertTransaction=$this->Common_model->insert("transaction",array('user_to'=>$userId,'group_from'=>$group_id,'type'=>'deposit'));
+ 
+		$getUpdatedGrpBalace = $this->Common_model->getAll("groups", array('id'=>$id))->row_array();
+		
+		echo json_encode($getUpdatedGrpBalace['group_balance']);
+		
+	}
+
+
+	// public function deposit($id,$amount){
+	// 	$deposit=$amount;
+	// 	$group_id=$id;
+	// 	$userId=$this->tank_auth->get_user_id();
+	// 	$insert=$this->Common_model->insert("group_account",array('member_id'=>$userId,'borrow'=>$borrow,'group_id'=>$group_id));
+	// 	$grp=$this->Common_model->getAll("groups",array('id'=>$group_id))->row_array();
+ 
+	// 	$update=$this->Common_model->update("groups",array('group_balance'=>$grp['group_balance']-$borrow),array('id'=>$group_id));
+
+	// 	$getBal=$this->Common_model->getAll("total_balance",array('user_id'=>$userId))->row_array();
+		
+	// 	$updatebal=$this->Common_model->update("total_balance",array('total_amount'=>$getBal['total_amount']+$borrow),array('user_id'=>$userId));
+ 
+ 
+	//    	$insertTransaction=$this->Common_model->insert("transaction",array('user_to'=>$userId,'group_from'=>$group_id,'type'=>'deposit'));
+ 
+	// 	$getUpdatedGrpBalace = $this->Common_model->getAll("groups", array('id'=>$id))->row_array();
+		
+	// 	echo json_encode($getUpdatedGrpBalace['group_balance']);
+		
+	// }
 
 
 

@@ -3,9 +3,14 @@
             <div class="nk-nav-scroll">
 
                 <div class="nav-user">
+<<<<<<< HEAD
+                    <img src="<?php $getImg=$this->Common_model->getAll("users", array('id'=>$user_id))->row_array(); echo $getImg['profile_image'];?>" alt="" class="rounded-circle">
+                    <h5><?php $name=$this->Common_model->getAll("users",array('id'=>$user_id))->row_array(); echo $name['name']; ?></h5>
+=======
                     <img src="<?php $user_id=$this->tank_auth->get_user_id();
                      $getImg=$this->Common_model->getAll("users", array('id'=>$user_id))->row_array(); echo $getImg['profile_image'];?>" alt="" class="rounded-circle">
                     <h5>Tanmay Nigde</h5>
+>>>>>>> cf521de62b4a1f1abe524d99d0db9bab28d47eff
                     <p>UI Developer</p>
 
                     <div class="nav-user-option">
@@ -16,7 +21,7 @@
                             <div class="dropdown-menu animated flipInX">
                                 <a class="dropdown-item" href="#">Account</a>
                                 <a class="dropdown-item" href="#">Lock</a>
-                                <a class="dropdown-item" href="<?php echo base_url('/index.php/logout') ?>">Logout</a>
+                                <a class="dropdown-item" href="<?php echo base_url('index.php/auth/logout'); ?>">Logout</a>
                             </div>
                         </div>
                         <div class="notification-option">
