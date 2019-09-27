@@ -121,7 +121,7 @@
                                                 <span>
                                                 <?php echo form_open($addMembers); ?>
                           <input type="hidden" name="link" value="<?php echo $gr['link']; ?>">
-                          <button type="submit" class="mb-2 btn btn-sm btn-danger mr-1">+</button>
+                          <button type="submit" class="fa fa-plus color-muted m-r-5">+</button>
                           </form>
                                                  
                                                     

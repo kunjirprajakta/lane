@@ -66,10 +66,7 @@ class Create_group extends CI_Controller
 			   redirect('/create_group');
 
 		}
-		else
-		{
-			echo "group cannot be create";
-		}
+	
 	}
 		
 	

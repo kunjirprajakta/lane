@@ -57,7 +57,7 @@
                             </li>
                             <li>
                                     <a href= "<?php echo base_url('index.php/member_request');?>" aria-expanded="false">
-                                    <span class="nav-text">Friend Request</span></a>                            </li>
+                                    <span class="nav-text">Group Request</span></a>                            </li>
                             <li>
                                     <a href= "<?php echo base_url('index.php/profile');?>" aria-expanded="false">
                                     <span class="nav-text">Profile</span></a>

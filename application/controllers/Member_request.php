@@ -47,7 +47,11 @@ class Member_request extends CI_Controller
 		{
 			echo "please add money";
 			redirect('/paytym');
-
+			if($getGroupUsers['limit']<$getUserBalance['total_amount'])
+			{
+			
+			redirect('/member_request');
+			}
 		}
 else{
 		$expl_user = explode(',',$getGroupUsers['users']);
