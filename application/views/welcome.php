@@ -108,16 +108,16 @@
                                 <table class="table">
                                     <tr>
                                         <td>Group Balance</td>
-                                        <td id="grp_bal-"<?php echo $g['id']; ?>>8,520/- </td>
+                                        <td id="grp_bal-"<?php echo $g['id']; ?>><?php echo $g['group_balance']; ?>/- </td>
                                     </tr>
-                                    <tr>
+                                    <!-- <tr>
                                         <td>Group Limit</td>
                                         <td><?php echo $g['limit']; ?></td>
                                     </tr>
                                     <tr>
                                         <td>Group Lane Score</td>
                                         <td><?php echo $g['lane_limit']; ?></td>
-                                    </tr>
+                                    </tr> -->
                                 </table>
                                     
                                     <?php echo form_open($borrow); ?>

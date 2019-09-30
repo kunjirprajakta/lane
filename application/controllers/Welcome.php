@@ -164,11 +164,7 @@ public function laneScore()
 	}
  	}
 	
-<<<<<<< HEAD
-//lane score for type Deposit
-=======
 //lane score for type = deposit
->>>>>>> cf521de62b4a1f1abe524d99d0db9bab28d47eff
 $getTransaction=$this->Common_model->getDepositrows("transaction");
 $n=sizeof($getTransaction);
 for($i=0;$i<$n;$i++)
@@ -196,9 +192,7 @@ $getdeposit=$this->Common_model->getAll("transaction",array('type'=>"deposit",'u
 
   }
  }
-<<<<<<< HEAD
 
-=======
  //   lane score for type = withdraw
  $getTransaction=$this->Common_model->getWithdrawrows("transaction");
  //print_r($getTransaction);
@@ -274,8 +268,7 @@ $id=$depo['user_id'];
   $n=sizeof($getTransaction);
 
 }
->>>>>>> cf521de62b4a1f1abe524d99d0db9bab28d47eff
-}
+
 
 
 
@@ -311,7 +304,7 @@ $id=$depo['user_id'];
 		
 	}
 
-
+}
 	// public function deposit($id,$amount){
 	// 	$deposit=$amount;
 	// 	$group_id=$id;

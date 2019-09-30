@@ -68,18 +68,18 @@ $captcha = array(
 	<meta name="description" content="Neon Admin Panel" />
 	<meta name="author" content="" />
 
-	<link rel="icon" href="<?php echo base_url(); ?>assets/images/favicon.ico">
+	<link rel="icon" href="<?php echo base_url('main/'); ?>assets/images/favicon.ico">
 
 	<title>Waiting Cutter | Login</title>
 
-	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/font-icons/entypo/css/entypo.css">
+	<link rel="stylesheet" href="<?php echo base_url('main/'); ?>assets/js/jquery-ui/css/no-theme/jquery-ui-1.10.3.custom.min.css">
+	<link rel="stylesheet" href="<?php echo base_url('main/'); ?>assets/css/font-icons/entypo/css/entypo.css">
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Noto+Sans:400,700,400italic">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/bootstrap.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/neon-core.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/neon-theme.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/neon-forms.css">
-	<link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/custom.css">
+	<link rel="stylesheet" href="<?php echo base_url('main/'); ?>assets/css/bootstrap.css">
+	<link rel="stylesheet" href="<?php echo base_url('main/'); ?>assets/css/neon-core.css">
+	<link rel="stylesheet" href="<?php echo base_url('main/'); ?>assets/css/neon-theme.css">
+	<link rel="stylesheet" href="<?php echo base_url('main/'); ?>assets/css/neon-forms.css">
+	<link rel="stylesheet" href="<?php echo base_url('main/'); ?>assets/css/custom.css">
 
 	<script src="<?php echo base_url(); ?>assets/js/jquery-1.11.3.min.js"></script>
 
@@ -103,7 +103,7 @@ var baseurl = '';
 
 <div class="login-container">	
 	<div class="login-form">
-		<div class="login-content"><img src="<?php echo base_url(); ?>assets/images/binglogo.png" width="150px" height="auto" ></div>
+		<div class="login-content"><img src="<?php echo base_url('main/'); ?>assets/images/binglogo.png" width="150px" height="auto" ></div>
 		<div class="login-content">
 			<?php echo form_open($this->uri->uri_string()); ?>	
 				<?php if ($use_username) { ?>
@@ -191,22 +191,22 @@ var baseurl = '';
 
 
 	<!-- Bottom scripts (common) -->
-	<script src="<?php echo base_url(); ?>assets/js/gsap/TweenMax.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/js/bootstrap.js"></script>
-	<script src="<?php echo base_url(); ?>assets/js/joinable.js"></script>
-	<script src="<?php echo base_url(); ?>assets/js/resizeable.js"></script>
-	<script src="<?php echo base_url(); ?>assets/js/neon-api.js"></script>
-	<script src="<?php echo base_url(); ?>assets/js/jquery.validate.min.js"></script>
-	<script src="<?php echo base_url(); ?>assets/js/neon-login.js"></script>
+	<script src="<?php echo base_url('main/'); ?>assets/js/gsap/TweenMax.min.js"></script>
+	<script src="<?php echo base_url('main/'); ?>assets/js/jquery-ui/js/jquery-ui-1.10.3.minimal.min.js"></script>
+	<script src="<?php echo base_url('main/'); ?>assets/js/bootstrap.js"></script>
+	<script src="<?php echo base_url('main/'); ?>assets/js/joinable.js"></script>
+	<script src="<?php echo base_url('main/'); ?>assets/js/resizeable.js"></script>
+	<script src="<?php echo base_url('main/'); ?>assets/js/neon-api.js"></script>
+	<script src="<?php echo base_url('main/'); ?>assets/js/jquery.validate.min.js"></script>
+	<script src="<?php echo base_url('main/'); ?>assets/js/neon-login.js"></script>
 
 
 	<!-- JavaScripts initializations and stuff -->
-	<script src="<?php echo base_url(); ?>assets/js/neon-custom.js"></script>
+	<script src="<?php echo base_url('main/'); ?>assets/js/neon-custom.js"></script>
 
 
 	<!-- Demo Settings -->
-	<script src="<?php echo base_url(); ?>assets/js/neon-demo.js"></script>
+	<script src="<?php echo base_url('main/'); ?>assets/js/neon-demo.js"></script>
 
 </body>
 </html>

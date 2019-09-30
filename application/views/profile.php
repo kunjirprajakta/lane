@@ -27,7 +27,7 @@
                                     </div>
                                     <div class="col-lg-8">
                                         <div class="user-profile-name">
-                                        <?php $i=1; foreach($request_name as $req){?>
+                                        <?php $i=1; foreach($request as $req){?>
                                         <?php $name=$this->Common_model->getAll("users",array('id'=>$req['id']))->row_array(); 
                                         echo $name['name'];
                                         ?>
@@ -46,23 +46,36 @@
                                                 <i class="ti-star"></i>
                                             </div>
                                         </div> -->
-                                        <div class="user-send-message">
+                                        <!-- <div class="user-send-message">
                                             <button class="btn btn-primary btn-addon" type="button">
                                                 <i class="ti-email m-r-10"></i>Send Message</button>
-                                        </div>
+                                        </div> -->
                                         <div class="contact-information">
+                                        <div class="address-content">
+                                                <span class="contact-title">Balance:</span>
+                                                <span class="mail-address">
+                                                <?php  foreach($balance as $b){?>
+                                                    <?php echo $b['total_amount'];
+                                                    //echo $b['total_amount'];
+                                                ?>
+                                                <?php } ?></span>
+                                            </div>
                                             <h4>Contact information</h4>
                                             <div class="phone-content">
                                                 <span class="contact-title">Phone:</span>
-                                                <span class="phone-number">+880123456789</span>
+                                                <span class="phone-number">9075127125</span>
                                             </div>
                                             <div class="address-content">
                                                 <span class="contact-title">Address:</span>
-                                                <span class="mail-address">123, King suit, South Side</span>
+                                                <span class="mail-address">Pimpri Pune</span>
                                             </div>
                                             <div class="email-content">
                                                 <span class="contact-title">Email:</span>
-                                                <span class="contact-email">hello@email.com</span>
+                                                <span class="contact-email">
+                                                <?php  foreach($request as $req){?>
+                                                    <?php echo $req['email'];
+                                                ?>
+                                                <?php } ?></span>
                                             </div>
                                             <!-- <div class="website-content">
                                                 <span class="contact-title">Website:</span>
@@ -77,11 +90,12 @@
                                             <h4>Basic information</h4>
                                             <div class="birthday-content">
                                                 <span class="contact-title">Birthday:</span>
-                                                <span class="birth-date">January 31, 1990 </span>
+                                                <span class="birth-date">Augest 29, 1998 </span>
                                             </div>
                                             <div class="gender-content">
                                                 <span class="contact-title">Gender:</span>
-                                                <span class="gender">Male</span>
+                                                <span class="gender"><?php echo $req['gender'];
+                                                ?></span>
                                             </div>
                                         </div>
                                     </div>

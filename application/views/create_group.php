@@ -90,7 +90,6 @@
                                             <th scope="col">Group Member Limit</th>
                                             <th scope="col">Balance</th>
                                             <th scope="col">Add Member</th>
-                                            <th scope="col">Share</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -120,20 +119,20 @@
                                             <td align="center">
                                                 <span>
                                                 <?php echo form_open($addMembers); ?>
-                          <input type="hidden" name="link" value="<?php echo $gr['link']; ?>">
-                          <button type="submit" class="fa fa-plus color-muted m-r-5">+</button>
-                          </form>
+                                                <input type="hidden" name="link" value="<?php echo $gr['link']; ?>">
+                                                <button type="submit" class="fa fa-plus color-muted m-r-5">+</button>
+                                                </form>
                                                  
                                                     
                                                 </span>
                                             </td>
-                                            <td align="center">
+                                            <!-- <td align="center">
                                                 <span>
                                                     <a title="" data-placement="top" data-toggle="add" href="#" data-original-title="Add">
                                                         <i class="fa fa-plus color-muted m-r-5"></i>
                                                     </a>
                                                     
-                                                </span>
+                                                </span> -->
                                             </td>
                                         </tr>
                                         

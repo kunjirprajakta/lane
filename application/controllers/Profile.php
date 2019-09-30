@@ -22,8 +22,11 @@ class profile extends CI_Controller
 			
 					$data['user_id']	= $this->tank_auth->get_user_id();
 					$data['username']	= $this->tank_auth->get_username();
-					$data['name']		= $this->session->userdata("name");
-					$data['request_name']=$this->Common_model->getAll("users",array('id'=>$data['user_id']))->result_array();
+					$data['name']		= $this->session->userdata("name");					
+					$data['bal']=$this->Common_model->getAll("total_balance",array('user_id'=>$this->tank_auth->get_user_id()))->row_array();
+					$data['balance']=$this->Common_model->getAll("total_balance",array('user_id'=>$this->tank_auth->get_user_id()))->result_array();
+
+					$data['request']=$this->Common_model->getAll("users",array('id'=>$data['user_id']))->result_array();
 					$data['friends']=$this->Common_model->getAll("friends",array('user'=>$data['user_id']))->result_array();
 					$data['brrowing']=$this->Common_model->getAll("group_account",array('member_id'=>$data['user_id']))->result_array();
 
