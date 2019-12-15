@@ -71,7 +71,7 @@ $captcha = array(
           <div class="card-body p-0">
             <!-- Nested Row within Card Body -->
             <div class="row">
-            <div class="col-lg-6"><img style="width:110%" src="<?php echo base_url('/assets');?>/images/lane.png"></div>
+            <div class="col-lg-6"><img style="width:110%" src="<?php echo base_url('/assets');?>/images/pmpml logo.jpg"></div>
               <!--<div class="col-lg-6 d-none d-lg-block bg-login-image"></div>-->
               <div class="col-lg-6">
                 <div class="p-5">

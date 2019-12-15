@@ -2,7 +2,7 @@
  <div class="footer">
             <div class="copyright">
                 <p>Copyright &copy;
-                    <a href="#">CodeElectra</a> 2019</p>
+                    <a href="#"></a> 2019</p>
             </div>
         </div>
         <!-- #/ footer -->

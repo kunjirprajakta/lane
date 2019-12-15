@@ -7,9 +7,9 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Code Electra-Lane</title>
+    <title>PMPML</title>
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url('/assets')?>/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url('/assets')?>/images/pmpml logo.jpg">
     <!-- Custom Stylesheet -->
 
     <link href="<?php echo base_url('/main')?>/css/style.css" rel="stylesheet">

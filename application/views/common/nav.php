@@ -47,25 +47,15 @@
                     <li class="nav-label">Main</li>
                    
                             <li>
-                                    <a  href= "<?php echo base_url('index.php/welcome');?>" aria-expanded="false">
+                                    <a  href= "<?php echo base_url('index.php/');?>" aria-expanded="false">
                                     <span class="nav-text">Dashboard</span></a>
                             </li>
                             <li>
-                                    <a href= "<?php echo base_url('index.php/add_friend');?>" aria-expanded="false">
-                                    <span class="nav-text">Add Friends</span></a>
+                                    <a href= "<?php echo base_url('index.php/student_registration');?>" aria-expanded="false">
+                                    <span class="nav-text">Student Registration </span></a>
                             </li>
                             </li>
-                            <li>
-                                    <a href= "<?php echo base_url('index.php/create_group');?>" aria-expanded="false">
-                                    <span class="nav-text">Create Group</span></a>
-                            </li>
-                            <li>
-                                    <a href= "<?php echo base_url('index.php/member_request');?>" aria-expanded="false">
-                                    <span class="nav-text">Group Request</span></a>                            </li>
-                            <li>
-                                    <a href= "<?php echo base_url('index.php/profile');?>" aria-expanded="false">
-                                    <span class="nav-text">Profile</span></a>
-                            </li>
+                            
                     
                 </ul>
             </div>
